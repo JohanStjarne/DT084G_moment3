@@ -1,0 +1,3 @@
+#DT084G
+##Moment 3, Del 2.1  
+Detta repository har jag skapat främst för att öva på att använda Git och Github. Det har jag gjort genom att först ta in en JavaScript-fil jag haft sedan tidigare, redigerat den för att få öva på att spara versioner i Visual Studio Code och förbättra hur koden är formulerad. Sedan har jag även en fil med ChatGpt:s förslag på lösningar, den krävde ockå några redigeringar för att fungera som önskat så det blev versionshantering även för den. Detta har sedan laddats upp till detta repository tillsammans med denna readme-fil.
