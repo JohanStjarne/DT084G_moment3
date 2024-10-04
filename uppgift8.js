@@ -1,11 +1,12 @@
 /* Lösning till uppgift 8. Av Johan Stjärne, 2024 
 funktionen skriver ut aktuellt tid och datum i tre olika format*/
+
 "use strict";
+const date = new Date (); // skapar ett datumobjekt med aktuell tid
+const year = date.getFullYear(); // hämtar årtalet från datumobjektet ovan
 
 function printDateAndTime(option){
     if (option === 1){
-        const date = new Date ();
-        const year = date.getFullYear();
         let month = date.getMonth();
         let day = date.getDate();
         let hours = date.getHours();
@@ -18,8 +19,6 @@ function printDateAndTime(option){
         console.log(`${hours}:${minutes}, ${year}-${month}-${day}`) // skriver ut tid och datum  önskat format
     }
     if (option === 2){
-        const date = new Date ();
-        const year = date.getFullYear();
         let month = date.getMonth();
         let day = date.getDate();
         let hours = date.getHours();
@@ -56,7 +55,6 @@ function printDateAndTime(option){
         console.log(`${month} ${day}, ${year} - ${hours}:${minutes}`)  // skriver ut tid och datum  önskat format
     }
     if (option === 3){
-        const date = new Date ();
         let month = date.getMonth();
         let day = date.getDate();
         let weekday = date.getDay();
