@@ -60,6 +60,7 @@ function printDateAndTime(option){
         let weekday = date.getDay();
         let hours = date.getHours();
         let minutes = date.getMinutes(); // hämtar aktuell datum och tid
+        month = month + 1
         if (hours < 10){hours= "0" + hours}
         if (minutes < 10){minutes= "0" + minutes}
         switch(weekday){

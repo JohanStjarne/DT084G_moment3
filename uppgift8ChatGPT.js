@@ -3,11 +3,17 @@
 const date = new Date(); // skapar ett datumobjekt med aktuell tid
 const year = date.getFullYear(); // hämtar årtalet från datumobjektet
 
-// Funktion för att formatera timmar och minuter
-function formatTime(hours, minutes) {
+// Funktion för att formatera timmar och minuter i HH:MM (med nolla vid timmar < 10)
+function formatTimeWithZero(hours, minutes) {
     if (hours < 10) hours = "0" + hours;
     if (minutes < 10) minutes = "0" + minutes;
     return `${hours}:${minutes}`;
+}
+
+// Funktion för att formatera timmar och minuter i HH.MM (ingen nolla vid timmar < 10)
+function formatTimeNoZero(hours, minutes) {
+    if (minutes < 10) minutes = "0" + minutes;
+    return `${hours}.${minutes}`;
 }
 
 // Funktion för att hämta månadsnamn
@@ -26,8 +32,8 @@ function getWeekdayName(weekday) {
 // Funktion för att hantera nollifyllda datum
 function formatDate(day, month) {
     if (day < 10) day = "0" + day;
-    if (month < 10) month = "0" + (month + 1); // Lägg till 1 då getMonth() returnerar 0-indexerat
-    return { day, month };
+    // Månad ska vara 1-baserad men utan nollifyllning här (1-12 istället för 0-11)
+    return { day, month: month + 1 };
 }
 
 function printDateAndTime(option) {
@@ -35,14 +41,16 @@ function printDateAndTime(option) {
     const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const formattedTime = formatTime(hours, minutes);
 
     if (option === 1) {
         const { day: formattedDay, month: formattedMonth } = formatDate(day, month);
+        const formattedTime = formatTimeWithZero(hours, minutes);
         console.log(`${formattedTime}, ${year}-${formattedMonth}-${formattedDay}`);
     } else if (option === 2) {
+        const formattedTime = formatTimeWithZero(hours, minutes);
         console.log(`${getMonthName(month)} ${day}, ${year} - ${formattedTime}`);
     } else if (option === 3) {
+        const formattedTime = formatTimeNoZero(hours, minutes);
         console.log(`${getWeekdayName(date.getDay())} ${day}/${month + 1}, kl. ${formattedTime}`);
     }
 }
