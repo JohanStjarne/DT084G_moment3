@@ -29,11 +29,12 @@ function getWeekdayName(weekday) {
     return weekdays[weekday] || "Veckodag ej tillgänglig";
 }
 
-// Funktion för att hantera nollifyllda datum
+// Funktion för att hantera nollifyllda datum (inklusive nolliföring av månaden)
 function formatDate(day, month) {
     if (day < 10) day = "0" + day;
-    // Månad ska vara 1-baserad men utan nollifyllning här (1-12 istället för 0-11)
-    return { day, month: month + 1 };
+    if (month < 9) month = "0" + (month + 1); // Lägg till 1 till månad och nollifyll endast om månaden är < 9
+    else month = month + 1; // För månader oktober (10), november (11), och december (12) behövs ingen nolla
+    return { day, month };
 }
 
 function printDateAndTime(option) {
